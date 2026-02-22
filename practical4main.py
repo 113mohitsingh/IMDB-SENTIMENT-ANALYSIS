@@ -9,12 +9,10 @@ import matplotlib.pyplot as plt
 st.title("IMDB Sentiment Analysis")
 uploaded_file = st.file_uploader("Upload IMDB Dataset CSV", type="csv")
 if uploaded_file:
-3
 df = pd.read_csv(uploaded_file)
-df[’sentiment’] = df[’sentiment’].map({’positive’: 1, ’negative’: 0})
+df['sentiment'] = df['sentiment'].map({’positive’: 1, ’negative’: 0})
 st.write(df.head())
-X_train, X_test, y_train, y_test = train_test_split(df[’review’], df[’
-sentiment’], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df[’review’],df[’sentiment’], test_size=0.2, random_state=42)
 tfidf = TfidfVectorizer(stop_words=’english’, max_features=5000)
 X_train_tfidf = tfidf.fit_transform(X_train)
 X_test_tfidf = tfidf.transform(X_test)
@@ -32,4 +30,5 @@ if user_review:
 vec = tfidf.transform([user_review])
 st.write(f"Sentiment: {’Positive’ if nb.predict(vec)[0] == 1 else ’
 Negative’}")
-5 Practical5:DiabetesProgressionPredictio
+
+
